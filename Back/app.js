@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require ('mongoose');
 const app = express();
 const userRoutes = require('./routes/user');
+const helmet = require('helmet');
 
 require('dotenv').config();
+app.use(helmet({ crossOriginResourcePolicy: { policy: "same-site" } }));
 
 mongoose.connect(`mongodb+srv://${process.env.ID_MONGODB}:${process.env.PWD_MONGODB}@cluster0.fchxxu2.mongodb.net/?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
