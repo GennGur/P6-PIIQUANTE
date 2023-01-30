@@ -66,3 +66,16 @@ exports.deleteSauce = (req, res, next) => {
       res.status(500).json({ error });
     });
 };
+
+exports.likeSauce = (req, res) => {
+  Sauce.findOne({ _id: req.params.id })
+  if (req.body.like === 1) {
+    if (sauce.usersLiked.includes(req.body.userId)) {
+        res.status(401).json({error: 'Sauce déja liké'});
+    } else {
+        Sauce.updateOne({ _id: req.params.id }, { $inc: { likes: req.body.like++ }, $push: { usersLiked: req.body.userId } })
+            .then(() => res.status(200).json({ message: 'Like ajouté !' }))
+            .catch(error => res.status(400).json({ error }))
+      }
+  } 
+};
