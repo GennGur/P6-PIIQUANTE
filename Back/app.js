@@ -5,6 +5,7 @@ const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 const helmet = require('helmet');
 const path = require('path');
+const rateLimit = require("express-rate-limit");
 
 require('dotenv').config();
 app.use(helmet({ crossOriginResourcePolicy: { policy: "same-site" } }));
@@ -17,6 +18,15 @@ mongoose.connect(`mongodb+srv://${process.env.ID_MONGODB}:${process.env.PWD_MONG
 );
 
 app.use(express.json());
+
+// Configurez le limiteur de taux
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limite de 100 requêtes par fenêtre
+});
+
+// Appliquez le limiteur à votre application entière
+app.use(limiter);
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
