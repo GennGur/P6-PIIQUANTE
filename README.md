@@ -18,6 +18,10 @@ Démarrer le serveur sur le dossier backend (Listening on port 3000)
 - npm start
 - nodemon server
 
+- A la racine du dossier back
+- créer un répertoire images
+- créer un fichier .env
+
 ---
 
 Démarrer le serveur sur le dossier frontend (http://localhost:4200/)
