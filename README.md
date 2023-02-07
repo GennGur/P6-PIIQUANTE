@@ -21,6 +21,10 @@ Démarrer le serveur sur le dossier backend (Listening on port 3000)
 - A la racine du dossier back
 - créer un répertoire images
 - créer un fichier .env
+  information du fichier .env 
+   - PWD_MONGODB=
+   - ID_MONGODB=
+   - JWT_TOKEN=
 
 ---
 
