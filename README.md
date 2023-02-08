@@ -33,5 +33,4 @@ Démarrer le serveur sur le dossier frontend (http://localhost:4200/)
 - cd front
 - npm install
 - npm start
-
 ---
